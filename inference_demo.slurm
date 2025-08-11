@@ -9,9 +9,9 @@
 #SBATCH --output=log-%x-%j.out
 #SBATCH --error=log-%x-%j.out
 
-module purge
-module load gcc
-source ~/miniconda3/etc/profile.d/conda.sh
+module load cuda/12.1
+# source ~/miniconda3/etc/profile.d/conda.sh
+source /ibex/user/fengc0a/soft/miniconda3/etc/profile.d/conda.sh
 conda activate /ibex/project/c2108/xux/software/protenix/env
 
 export LAYERNORM_TYPE=fast_layernorm

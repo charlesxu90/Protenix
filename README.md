@@ -13,15 +13,15 @@ pip install gemmi==0.6.5 pdbeccdutils==0.8.5
 git clone https://github.com/NVIDIA/cutlass
 export CUTLASS_PATH=/path/to/cutlass
 
+## Prepare
+python scripts/gen_ccd_cache.py -c release_data/ccd_cache/ -n 10
+cp -r release_data /home/xux/miniforge3/envs/protenix/lib/python3.12/site-packages/
 ```
 
 ## Run
 ```shell
 
-## Prepare
-python scripts/gen_ccd_cache.py -c release_data/ccd_cache/ -n 10
-cp -r release_data /home/xux/miniforge3/envs/protenix/lib/python3.12/site-packages/
-
+# convert
 wget https://files.rcsb.org/download/7pzb.cif
 mv 7pzb.cif examples/
 protenix tojson --input examples/7pzb.cif --out_dir ./output
