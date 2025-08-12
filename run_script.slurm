@@ -22,11 +22,13 @@ export CUTLASS_PATH="$PROTENIX_DIR/cutlass"
 
 input_json_path=$1 # Example: "./examples/example.json"
 
-python3 $PROTENIX_DIR/Protenix/runner/inference.py \
---model_name "protenix_base_default_v0.5.0"\
---seeds 101 \
---dump_dir "${input_json_path}-output" \
---input_json_path ${input_json_path} \
---model.N_cycle 10 \
---sample_diffusion.N_sample 5 \
---sample_diffusion.N_step 200
+# python3 $PROTENIX_DIR/Protenix/runner/inference.py \
+# --model_name "protenix_base_default_v0.5.0"\
+# --seeds 101 \
+# --dump_dir "${input_json_path}-output" \
+# --input_json_path ${input_json_path} \
+# --model.N_cycle 10 \
+# --sample_diffusion.N_sample 5 \
+# --sample_diffusion.N_step 200
+
+protenix predict --input  ${input_json_path} --out_dir "${input_json_path}-output" --seeds 101 --model_name "protenix_base_default_v0.5.0"
