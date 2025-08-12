@@ -12,11 +12,12 @@
 module load cuda/12.1
 # source ~/miniconda3/etc/profile.d/conda.sh
 source /ibex/user/fengc0a/soft/miniconda3/etc/profile.d/conda.sh
-conda activate /ibex/project/c2108/xux/software/protenix/env
+PROTENIX_DIR="/ibex/project/c2108/xux/software/protenix"
+conda activate $PROTENIX_DIR/env
 
 export LAYERNORM_TYPE=fast_layernorm
 export USE_DEEPSPEED_EVO_ATTENTION=true
-export CUTLASS_PATH="/ibex/project/c2108/xux/software/protenix/cutlass"
+export CUTLASS_PATH="$PROTENIX_DIR/cutlass"
 
 N_sample=5
 N_step=200
@@ -27,7 +28,7 @@ input_json_path=$1 # Example: "./examples/example.json"
 dump_dir="${input_json_path}-output"
 model_name="protenix_base_default_v0.5.0"
 
-python3 runner/inference.py \
+python3 $PROTENIX_DIR/protenix/runner/inference.py \
 --model_name ${model_name} \
 --seeds ${seed} \
 --dump_dir ${dump_dir} \
